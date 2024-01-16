@@ -1,0 +1,131 @@
+/* userbd */
+.userbd .pannel {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.userbd .pannel .pannel_title {
+    display: flex;
+    justify-content: space-between;
+    height: 42px;
+    border-bottom: 1px solid #c7c6c6;
+}
+
+.pannel .pannel_title h4 {
+    font-size: 20px;
+    color: #333;
+}
+
+.pannel .pannel_title a {
+    margin-top: 6px;
+    font-size: 16px;
+    color: #999;
+}
+
+.order li,
+.cart_detail li {
+    display: flex;
+    height: 137px;
+    margin-top: -1px;
+    margin-bottom: 20px;
+    border: 1px solid #c7c6c6;
+}
+
+.order li:first-child,
+.cart_detail li:first-child{
+    height: 30px;
+    line-height: 30px;
+}
+
+.order li .goods,
+.cart_detail li .goods {
+    display: flex;
+    align-items: center;
+    padding: 17px 0 14px 12px;
+    flex: 1;
+}
+
+.order li .goods .pic img,
+.cart_detail li .goods .pic img {
+    width: 107px;
+    height: 107px;
+    margin-right: 10px;
+}
+
+.order li .goods .txt,
+.cart_detail li .goods .txt {
+    flex: 1;
+    width: 0;
+}
+
+.order li .goods .txt h5,
+.cart_detail li .goods .txt h5 {
+    font-weight: normal;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.order li .amount,
+.cart_detail li .amount {
+    width: 120px;
+    border-left: 1px solid #e8e8e8;
+}
+
+.order li .address,
+.cart_detail li .address {
+    padding: 0 10px;
+    border-left: 1px solid #e8e8e8;
+    width: 150px;
+    word-wrap: break-word;
+}
+
+.order li .price,
+.cart_detail li .price {
+    flex-direction: column;
+    width: 130px;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+}
+
+.price b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+
+.price span,
+.price i {
+    color: red;
+    font-size: 19px;
+}
+
+
+
+.order li .opt,
+.cart_detail li .opt {
+    flex-direction: column;
+    width: 120px;
+}
+
+.order li .opt a,
+.cart_detail li .opt a {
+    margin: 2px 0;
+    width: 100px;
+    height: 30px;
+    background-color: #5eb69c;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.order .common,
+.cart_detail .common {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/userbd_common.css">
+    <link rel="stylesheet" href="../static/css/center.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="/" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/order">Track my order</a></li>
+                <li><a href="/cart">My Cart</a></li>
+                <li><a href="/center">{{ username }}</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="header wrapper">
+        <!-- cart -->
+        <a href="/cart">
+            <div class="cart">
+                <span>2</span>
+            </div>
+        </a>
+        <!-- search bar -->
+        <form action="/search" method="post">
+            <div class="search">
+                <input type="text" placeholder="Search..Apple" name="search"><button type="submit">Search</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- user content -->
+    <div class="userbd">
+        <div class="wrapper">
+            <!-- aside -->
+            <div class="aside">
+                <ul>
+                    <li>
+                        <a href="/center">
+                            <img src="../static/upload/avatar.jpg" alt="">
+                            <p class="">Username</p>
+                        </a>
+                    </li>
+                    <li><a href="/order">My Orders</a></li>
+                    <li><a href="/cart">shopCart</a></li>
+                </ul>
+            </div>
+
+            <!-- main content -->
+            <div class="main">
+                <!-- cart -->
+                <div class="cart_detail pannel">
+                    <div class="pannel_title">
+                        <h4>My Cart</h4>
+                        <a href="/cart">More ></a>
+                    </div>
+                    <!-- order content -->
+                    <div class="bd">
+                        <ul>
+                            
+                            <li>
+                                <div class="goods">
+                                    <p>Product</p>
+                                </div>
+                                <div class="address common">Address</div>
+                                <div class="amount common">Amount</div>
+                                <div class="price common">
+                                    <p>Price</p>
+                                </div>
+                                <div class="price common">
+                                    <p>Total</p>
+                                </div>
+                                <div class="opt common">
+
+                                </div>
+                            </li>
+
+                            {% for p in cart_products %}
+                                {% if loop.index <= 2 %}
+                                    <li>
+                                        <div class="goods">
+                                            <div class="pic">
+                                                <a href="/product/{{ p[0] }}"><img src="{{ p[6] }}" alt="{{ p[3] }}"></a>
+                                            </div>
+                                            <div class="txt">
+                                                <h5>{{ p[5] }}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="address common">{{ buyer_info[loop.index0][5] }}</div>
+                                        <div class="amount common">{{ cart_list[loop.index0][3] }}</div>
+                                        <div class="price common">
+                                            {% if p[10] is not none %}
+                                                <b>￥<i style="margin-right: 6px">{{ p[10] }}</i></b>
+                                                <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;">{{ p[4] }}</span>
+                                            {% else %}
+                                                <b>￥<span>{{ p[4] }}</span></b>
+                                            {% endif %}
+                                        </div>
+                                        <div class="price common">
+                                            {% if p[10] is not none %}
+                                                <b>￥<i style="margin-right: 6px">{{ p[10]*cart_list[loop.index0][3] }}</i></b>
+                                                <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;">{{ p[4]*cart_list[loop.index0][3] }}</span>
+                                            {% else %}
+                                                <b>￥<span>{{ p[4]*cart_list[loop.index0][3] }}</span></b>
+                                            {% endif %}
+                                        </div>
+                                        <div class="opt common">
+                                            <a href="/buy_cart/{{ cart_list[loop.index0][0] }}">Buy Now</a>
+                                            <a href="/delete_cart/{{ cart_list[loop.index0][0] }}">Delete</a>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="order pannel">
+                    <div class="pannel_title">
+                        <h4>My Order</h4>
+                        <a href="/order">More ></a>
+                    </div>
+                    <div class="bd">
+                        <ul>
+                            <li>
+                                <div class="goods">
+                                    <p>Product</p>
+                                </div>
+                                <div class="address common">Address</div>
+                                <div class="amount common">Amount</div>
+                                <div class="price common">
+                                    <p>Price</p>
+                                </div>
+                                <div class="price common">
+                                    <p>Total</p>
+                                </div>
+                                <div class="opt common">
+                                    <p>Status</p>
+                                </div>
+                            </li>
+
+                            {% for p in order_products %}
+                                {% if loop.index <= 2 %}
+                                    <li>
+                                        <div class="goods">
+                                            <div class="pic">
+                                                <a href="/product/{{ p[0] }}"><img src="{{ p[6] }}" alt="{{ p[3] }}"></a>
+                                            </div>
+                                            <div class="txt">
+                                                <h5>{{ p[5] }}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="address common">{{ buyer_info[loop.index0][5] }}</div>
+                                        <div class="amount common">{{ orders[loop.index0][3] }}</div>
+                                        <div class="price common">
+                                            {% if p[10] is not none %}
+                                                <b>￥<i style="margin-right: 6px">{{ p[10] }}</i></b>
+                                                <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;">{{ p[4] }}</span>
+                                            {% else %}
+                                                <b>￥<span>{{ p[4] }}</span></b>
+                                            {% endif %}
+                                        </div>
+                                        <div class="price common">
+                                            {% if p[10] is not none %}
+                                                <b>￥<i style="margin-right: 6px">{{ p[10]*orders[loop.index0][3] }}</i></b>
+                                                <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;">{{ p[4]*orders[loop.index0][3] }}</span>
+                                            {% else %}
+                                                <b>￥<span>{{ p[4]*orders[loop.index0][3] }}</span></b>
+                                            {% endif %}
+                                        </div>
+                                        {% if orders[loop.index0][6] == 0 %}
+                                            <div class="opt common">
+                                                <p>Pending</p>
+                                            </div>
+                                        {% elif orders[loop.index0][6] == 1 %}
+                                            <div class="opt common">
+                                                <p>Shipped</p>
+                                            </div>
+                                        {% else %}
+                                            <div class="opt common">
+                                                <p>Completed</p>
+                                            </div>
+                                        {% endif %}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+    <script src="../static/js/price.js"></script>
+
+</body>
+
+</html>

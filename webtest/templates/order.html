@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/userbd_common.css">
+    <link rel="stylesheet" href="../static/css/order.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="/" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/order">Track my order</a></li>
+                <li><a href="/cart">My Cart</a></li>
+                <li><a href="/center">{{ username }}</a></li>
+                <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header wrapper">
+        <!-- cart -->
+        <a href="/cart">
+            <div class="cart">
+                <span>2</span>
+            </div>
+        </a>
+        <!-- search bar -->
+        <form action="{{ url_for('search') }}" method="post">
+            <div class="search">
+                <input type="text" placeholder="Search..Apple" name="search"><button type="submit">Search</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+
+    <div class="userbd">
+        <div class="wrapper">
+            <!-- main content -->
+            <div class="main">
+                <h4>My order</h4>
+                <div class="bd">
+                    <ul>
+                        <li>
+                            <div class="goods common">
+                                <p>Product</p>
+                            </div>
+                            <div class="address common">
+                                <p>Address</p>
+                            </div>
+                            <div class="amount common">
+                                <p>Amount</p>
+                            </div>
+                            <div class="price common">
+                                <p>Price</p>
+                            </div>
+                            <div class="price common">
+                                <p>Total </p>
+                            </div>
+                            <div class="create_time common time">Create_time</div>
+                            <div class="arrival_time common time">Arrival_time</div>
+                            <div class="status common">
+                                <p>Status</p>
+                            </div>
+                            <div class="opt common">
+
+                            </div>
+                        </li>
+                        {% for p in products %}
+                        <li>
+                            <div class="goods common">
+                                <div class="pic">
+                                    <a href="/product/{{ p[0] }}"><img src="{{ p[6] }}" alt="{{ p[3] }}"></a>
+                                </div>
+                                <div class="txt">
+                                    <h5>{{ p[5] }}</h5>
+                                </div>
+                            </div>
+                            <div class="address common">{{ buy_info[5] }}</div>
+                            <div class="amount common">{{ orders[loop.index0][4] }}</div>
+                            <div class="price common">
+                                {% if p[10] is not none %}
+                                    <b>￥<i style="margin-right: 6px">{{ p[10] }}</i></b>
+                                    <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;" >{{ p[4] }}</span>
+                                {% else %}
+                                    <b>￥<span>{{ p[4] }}</span></b>
+                                {% endif %}
+                            </div>
+                            <div class="price common">
+                                {% if p[10] is not none %}
+                                    <b>￥<i style="margin-right: 6px">{{ p[10]*orders[loop.index0][4] }}</i></b>
+                                    <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;">{{ p[4]*orders[loop.index0][4] }}</span>
+                                {% else %}
+                                    <b>￥<span>{{ p[4]*orders[loop.index0][4] }}</span></b>
+                                {% endif %}
+                            </div>
+                            <div class="create_time common time">{{ orders[loop.index0][7] }}</div>
+                            {% if orders[loop.index0][8] is not none %}
+                                <div class="arrival_time common time">{{ orders[loop.index0][8] }}</div>
+                            {% else %}
+                                <div class="arrival_time common time"></div>
+                            {% endif %}
+                            {% if orders[loop.index0][6] == 0 %}
+                                <div class="status common">
+                                    <p style="color: #cccc07">Pending</p>
+                                </div>
+                                <div class="opt common">
+                                    <p style="color: #cccc07">Awaiting delivery</p>
+                                </div>
+                            {% elif orders[loop.index0][6] == 1 %}
+                                <div class="status common">
+                                    <p style="color: red">Shipped</p>
+                                </div>
+                                <div class="opt common">
+                                    <a href="/order/{{ orders[loop.index0][0] }}">Confirm</a>
+                                </div>
+                            {% else %}
+                                <div class="status common">
+                                    <p style="color: #00c65d">Completed</p>
+                                </div>
+                                <div class="opt common">
+                                    <p style="color: #00c65d">Completed</p>
+                                </div>
+                            {% endif %}
+
+
+                        </li>
+                        {% endfor %}
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper">
+            <div class="top">
+                <ul>
+                    <li>Low Price</li>
+                    <li>Fast Delivery</li>
+                    <li>Fresh Ingredients</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

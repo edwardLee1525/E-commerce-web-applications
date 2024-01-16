@@ -1,0 +1,148 @@
+body {
+    background-image: url(../upload/bcg_login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header {
+    padding-top: 30px;
+    text-align: center;
+    height: 100px;
+    background-color: #333;
+}
+
+.logo {
+    line-height: 52px;
+    font-size: 38px;
+    color: #dcdcdc;
+}
+
+.tip {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.tip h2 {
+    display: inline;
+    padding: 5px 20px;
+    width: fit-content;
+    border: 1px solid #000;
+    box-shadow: 2px 2px;
+    font-size: 27px;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.login {
+    text-align: center;
+}
+
+form {
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+.login .content{
+    position: relative;
+    margin-top: 1px;
+    display: inline-block;
+    width: 490px;
+    height: 460px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px;
+    background-color: rgba(220, 220, 220, .7);
+}
+
+.login h4{
+    padding: 20px 0;
+    font-size: 26px;
+    background-color: #3b3b3b;
+    color: #fff;
+}
+
+.login .username,
+.login .pwd{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin-top: 60px;
+    font-size: 18px;
+}
+
+
+/* error hit */
+.login .username p,
+.login .pwd p{
+    position: absolute;
+    right: 140px;
+    bottom: -22px;
+    -webkit-touch-callout: none;
+    user-select: none;
+    color: red;
+    font-size: 12px;
+}
+
+.login .username input,
+.login .pwd input{
+    float: right;
+    padding: 0 20px;
+    width: 270px;
+    height: 39px;
+    outline: none;
+    background-color: rgb(207, 207, 207, .7);
+    border: 1px solid #000;
+    box-shadow: 1px 1px;
+}
+
+label{
+    width: 380px;
+}
+
+label span{
+    float: right;
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+.login .button{
+    margin-top: 70px;
+}
+
+.login .button a,
+.login .button button{
+    display: inline-block;
+    width: 130px;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(243, 193, 201, .9);
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.login .button a:last-child{
+    margin-left: 20px;
+}
+
+.login .button a:hover,
+.login .button button:hover{
+    background-color: rgba(0, 213, 255, .8);
+}
+
+.login .port span{
+    position: absolute;
+    padding: 0 10px;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.login .port span:hover{
+    background-color: rgba(0, 213, 255, .8);
+    color: white;
+}

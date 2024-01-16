@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="/" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/order">Track my order</a></li>
+                <li><a href="/cart">My Cart</a></li>
+                {% if not username %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register_buyer">Register</a></li>
+                {% else %}
+                    <li><a href="/center">{{ username }}</a></li>
+                    <li><a href="/logout">Log out</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="header wrapper">
+        <!-- cart -->
+        <a href="/cart">
+            <div class="cart">
+                <span>2</span>
+            </div>
+        </a>
+        <!-- search bar -->
+        <form action="/search" method="post">
+            <div class="search">
+                <input type="text" placeholder="Search..Apple" name="search"><button type="submit">Search</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+
+
+    <!-- banner -->
+    <div class="banner">
+        <div class="wrapper">
+            <!-- banner aside -->
+            <div class="aside">
+                <ul>
+                    {% for c in categories %}
+                        <li><a href="/category/{{ c[0] }}">{{ c[1] }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- banner image -->
+            <div class="bcg">
+                <a href="/category/{{ categories[0][0] }}"><img src="../static/upload/banner1.jpg" alt=""></a>
+            </div>
+
+            <!-- Turn page button-->
+            <button class="prev"></button>
+            <button class="next"></button>
+
+            <!-- Turn page dots -->
+            <ol class="indicator">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+
+    </div>
+    <div class="sale">
+        <div class="wrapper">
+
+            <div class="bd clearfix">
+                <div class="title">
+                    <a href=""></a>
+                </div>
+                <ul>
+                    {% for product in products %}
+                        {% if loop.index <= 7 %}
+                                <li>
+                                    <a href="/product/{{ product[0] }}">
+                                        <img src="{{ product[1] }}" alt="{{ product[2] }}">
+                                        <h3>{{ product[2] }}</h3>
+                                    </a>
+                                    <b>￥</b>
+                                    <i>{{ product[4] }}</i>
+                                    <span>{{ product[3] }}</span>
+                                </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="wrapper">
+            {% for c in categories %}
+                <div class="category_list">
+                    <div class="hd">
+                        <h2>{{ c[1] }}</h2>
+                    </div>
+                    <div class="bd clearfix">
+                        <ul>
+                            {% if all_products[loop.index0] != [] %}
+                                {% for p in all_products[loop.index0] %}
+                                    {% if loop.index<= 4 %}
+                                        <li>
+                                            <a href="/product/{{ p[0] }}">
+                                                <img src="{{ p[6] }}" alt="{{ p[3] }}">
+                                                <h3>{{ p[3] }}</h3>
+                                            </a>
+                                            <b>￥</b>
+                                            <i>{{ p[10] }}</i>
+                                            <span>{{ p[4] }}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="no_found">
+                                            <p></p>
+                                </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="elevator">
+        <ul class="elevator-list">
+{#            {% for c in categories %}#}
+{#                <li><a>{{ c[1] }}</a></li>#}
+{#            {% endfor %}#}
+            <li><a id="backTop">Top</a></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+
+    <script>
+        const img = document.querySelector('.banner .bcg img')
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+        const img_a = document.querySelector('.banner .bcg a')
+        let i = 1;
+        next.addEventListener('click', function () {
+            i++;
+            if (i > 5) {
+                i = 1;
+            }
+            img.src = `../static/upload/banner${i}.jpg`;
+            img_a.href = "/category/" + i
+            toggle();
+        })
+
+        prev.addEventListener('click', function () {
+            i--;
+            if (i === 0) {
+                i = 5
+            }
+            img.src = `../static/upload/banner${i}.jpg`;
+            img_a.href = "/category/" + i-1
+            toggle();
+        })
+
+        function toggle() {
+            document.querySelector('.indicator .active').classList.remove('active');
+            document.querySelector(`.indicator li:nth-child(${i})`).classList.add('active');
+        }
+
+        let timeId = setInterval(function () {
+            next.click();
+        }, 1000);
+
+        const bcg = document.querySelector('.banner .bcg')
+
+        bcg.addEventListener('mouseenter', function () {
+            clearInterval(timeId);
+        })
+
+        bcg.addEventListener('mouseleave', function () {
+            clearInterval(timeId);
+
+            timeId = setInterval(function () {
+                next.click();
+            }, 3000)
+        });
+
+        (function () {
+            const elevator = document.querySelector('.elevator')
+            window.addEventListener('scroll', function () {
+                const n = document.documentElement.scrollTop
+                if (n >= 300) {
+                    elevator.style.opacity = '1';
+                } else {
+                    elevator.style.opacity = '0';
+                }
+            })
+            const backTop = document.querySelector('#backTop')
+            backTop.addEventListener('click', function () {
+            window.scrollTo(0, 0)
+            })
+        })();
+
+    </script>
+
+    <script src="../static/js/price.js"></script>
+</body>
+
+</html>

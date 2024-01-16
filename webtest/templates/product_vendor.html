@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/vendor_common.css">
+    <link rel="stylesheet" href="../static/css/product_vendor.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/vendor_product">Product Management</a></li>
+                <li><a href="/vendor_order">Order Management</a></li>
+                <li><a href="#">{{ username }}</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="userbd">
+        <div class="wrapper">
+            <!-- main content -->
+            <div class="main">
+                <div class="tab clearfix">
+                    <a href="/vendor_product">Product Management</a>
+                    <a href="/vendor_order">Order Management</a>
+                </div>
+                <div class="bd">
+                    <ul>
+                        <li>
+                            <div class="goods common">
+                                <p>Product</p>
+                            </div>
+                            <div class="category common">
+                                <p>Category</p>
+                            </div>
+                            <div class="desc common">
+                                <p>Description</p>
+                            </div>
+                            <div class="price common">
+                                <p>Price </p>
+                            </div>
+                            <div class="edit_time common time">Edit time</div>
+
+                            <div class="opt common">
+                                <a href="/add_product">New</a>
+                            </div>
+                        </li>
+                        {% for product in products %}
+                            <li>
+                                <div class="goods common">
+                                    <div class="pic">
+                                        <a href="#"><img src="{{ product[6] }}" alt="{{ product[3] }}"></a>
+                                    </div>
+                                    <div class="txt">
+                                        <h5>{{ product[3] }}</h5>
+                                    </div>
+                                </div>
+                                <div class="category common">
+                                    <p>{{ category[loop.index0][1] }}</p>
+                                </div>
+                                <div class="desc common">
+                                    <p>{{ product[5] }}</p>
+                                </div>
+                                <div class="price common">
+                                    {% if product[10] is not none %}
+                                        <b>￥<i>{{ product[10] }}</i></b>
+                                        <span>{{ product[4] }}</span>
+                                    {% else %}
+                                        <i>{{ product[10] }}</i>
+                                        <b>￥ <span>{{ product[4] }}</span></b>
+                                    {% endif %}
+
+                                </div>
+                                <div class="edit_time common time">{{ product[13] }}</div>
+
+                                <div class="opt common">
+                                    <a href="/edit/{{ product[0] }}">Edit</a>
+                                    <a href="/delete/{{ product[0] }}">Delete</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="wrapper">
+            <div class="top">
+                <ul>
+                    <li>Low Price</li>
+                    <li>Fast Delivery</li>
+                    <li>Fresh Ingredients</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../static/js/price.js"></script>
+
+</body>
+
+</html>

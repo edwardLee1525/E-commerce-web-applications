@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register_buyer</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/register.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="{{ url_for('index') }}" class="logo">Edward's Shop</a>
+    </div>
+
+    <div class="tip">
+        <h2>
+            Welcome to use my website!
+        </h2>
+    </div>
+
+    <div class="register">
+        <form action="{{ url_for('register_buyer') }}" autocomplete="off" method="post">
+            <div class="content wrapper">
+                <div>
+                    <h4>Buyer</h4>
+                </div>
+
+                <div class="username">
+                    <label>
+                        <input type="text" placeholder="Set the login username" name="username">
+                        <span>Username:</span>
+                    </label>
+                    <p></p>
+                </div>
+
+                <div class="pwd">
+                    <label>
+                        <input type="password" placeholder="Set the login password" name="pwd">
+                        <span>Login Password : </span>
+                    </label>
+                    <p></p>
+                </div>
+
+                <div class="confirm_pwd">
+                    <label>
+                        <input type="password" placeholder="Enter the login password again" name="confirm_pwd">
+                        <span>Confirm Password : </span>
+                    </label>
+                    <p></p>
+                </div>
+
+                <div class="phone">
+                    <label>
+                        <input type="text" placeholder="Enter your mobile number" name="phone">
+                        <span>Mobile Number : </span>
+                    </label>
+                    <p></p>
+                </div>
+
+                <div class="email">
+                    <label>
+                        <input type="text" placeholder="Enter your email" name="email">
+                        <span>Email : </span>
+                    </label>
+                    <p></p>
+                </div>
+
+                <div class="address">
+                    <label>
+                        <input type="text" placeholder="Enter your address" name="address">
+                        <span>Address : </span>
+                    </label>
+                    <p></p>
+                </div>
+
+                <div class="button">
+                    <button class="enter">Confirm</button>
+                    <a href="{{url_for('login')}}">Cancel</a>
+                </div>
+
+                <div class="port">
+                    <a href="{{url_for('login')}}">Already have account?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="../static/js/register.js">
+
+    </script>
+
+    {% if error_message %}
+    <script>
+        alert('{{ error_message }}');
+    </script>
+    {% endif %}
+
+</body>
+
+</html>

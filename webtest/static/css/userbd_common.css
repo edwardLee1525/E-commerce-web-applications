@@ -1,0 +1,40 @@
+.userbd {
+    padding: 30px 0 85px;
+    background-color: #f6f6f6;
+}
+
+.userbd .wrapper {
+    display: flex;
+}
+
+.userbd .aside {
+    width: 170px;
+    margin-right: 20px;
+    padding-left: 10px;
+    min-height: 500px;
+    background-color: white;
+    text-align: center;
+}
+
+.userbd .aside li{
+    display: block;
+    margin-top: 20px;
+}
+
+.userbd .aside li:first-child{
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #c7c6c6;
+}
+
+.userbd .aside li img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.userbd .main {
+    flex: 1;
+    min-height: 500px;
+    background-color: white;
+}

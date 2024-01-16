@@ -1,0 +1,291 @@
+body {
+    background-color: #f4f4f4;
+}
+
+.banner {
+    height: 400px;
+}
+
+.banner .wrapper {
+    position: relative;
+    height: 400px;
+}
+
+.banner .aside {
+    float: left;
+    width: 190px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.banner .bcg {
+    float: right;
+}
+
+.banner .aside li {
+    position: relative;
+    height: 80px;
+    border-bottom: 1px solid #000;
+}
+
+.banner .aside li a {
+    display: block;
+    margin-left: 20px;
+    line-height: 80px;
+    font-size: 14px;
+    color: #f5f5f5;
+}
+
+.banner .aside li a::after {
+    position: absolute;
+    content: '';
+    top: 35px;
+    right: 28px;
+    width: 6px;
+    height: 11px;
+    background-image: url(../images/sprites.png);
+    background-position: -80px -110px;
+}
+
+.banner .aside li a:hover {
+    color: #00c65d;
+}
+
+.banner .prev,
+.banner .next {
+    position: absolute;
+    top: 180px;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0, 0, 0, .2);
+    background-image: url(../images/sprites.png);
+    border: none;
+    border-radius: 50%;
+
+}
+
+.banner .prev {
+    left: 224px;
+    background-position: 14px -59px;
+}
+
+.banner .next {
+    right: 27px;
+    background-position: -21px -59px;
+}
+
+.banner ol {
+    position: absolute;
+    left: 600px;
+    bottom: 30px;
+    width: 200px;
+    height: 10px;
+}
+
+.banner ol li {
+    float: left;
+    margin-left: 24px;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.47);
+    border-radius: 50%;
+}
+
+.banner ol .active {
+    background-color: #fff;
+}
+
+.sale .hd h2 {
+    text-align: center;
+    margin: 50px;
+    font-size: 28px;
+}
+
+.sale .bd {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    font-size: 0;
+}
+
+.sale .bd .title {
+    margin-right: 15px;
+}
+
+.sale .bd .title a {
+    display: inline-block;
+    text-align: center;
+    height: 280px;
+    min-width: 235px;
+    background-color: #e83632;
+    background-image: url(../upload/sale.png);
+}
+
+.sale .bd ul {
+    display: flex;
+    overflow-x: auto;
+}
+
+.sale .bd ul::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.sale .bd ul::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+}
+
+.sale .bd ul::-webkit-scrollbar-thumb {
+    background: #bfbfbf;
+    border-radius: 10px;
+}
+
+.sale .bd ul::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+
+.sale .bd li {
+    position: relative;
+    margin-right: 4px;
+    margin-bottom: 10px;
+    min-width: 265px;
+    height: 280px;
+    text-align: center;
+    background-color: white;
+}
+
+.sale .bd a img {
+    width: 180px;
+    height: 180px;
+}
+
+.sale .bd a h3 {
+    margin: 10px 25px 10px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.sale .bd b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+.sale .bd span,
+.sale .bd i {
+    color: red;
+    font-size: 19px;
+}
+
+
+.elevator {
+    position: fixed;
+    left: 50%;
+    top: 280px;
+    z-index: 999;
+    margin-left: 640px;
+    opacity: 0;
+    transition: all .5s;
+}
+
+.category .category_list h2{
+    text-align: center;
+    padding-bottom: 10px;
+    margin: 50px 0 30px;
+    font-size: 28px;
+    border-bottom: 1px dotted black;
+}
+
+.category_list ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.category_list li {
+    text-align: center;
+    width: 265px;
+    height: 280px;
+    background-color: white;
+}
+
+.category_list img {
+    margin-right: 4px;
+    margin-bottom: 10px;
+    width: 180px;
+    height: 180px;
+}
+
+.category_list a h3 {
+    margin: 10px 25px 10px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.category_list b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+.category_list span,
+.category_list i {
+    color: red;
+    font-size: 19px;
+}
+
+.sale li:hover,
+.category_list li:hover {
+    border: 1px solid #000;
+    box-shadow: 2px 2px 1px;
+    transition: 1s;
+}
+
+.no_found {
+    width: 1190px;
+    text-align: center;
+    background-color: white;
+}
+
+.no_found p {
+    display: inline-block;
+    width: 280px;
+    height: 280px;
+    background-image: url("../images/error_404.jpeg");
+    background-size: cover;
+}
+
+.elevator {
+    position: fixed;
+    top: 340px;
+    z-index: 999;
+    margin-left: 640px;
+    opacity: 0;
+    transition: all .5s;
+}
+
+.elevator .elevator-list {
+    float: right;
+    width: 90px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #f5f5f5;
+    position: relative;
+}
+
+.elevator .elevator-list li {
+    text-align: center;
+    border-bottom: 1px solid #c2c2c2;
+    background: #fff;
+}
+
+.elevator .elevator-list li a {
+    width: 60px;
+    cursor: pointer;
+}
+
+.elevator .elevator-list li a:hover,
+.elevator .elevator-list li a.active {
+    color: #27BA9B;
+}

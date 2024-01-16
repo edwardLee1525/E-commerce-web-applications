@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/product.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="/" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/order">Track my order</a></li>
+                <li><a href="/cart">My Cart</a></li>
+                {% if not username %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register_buyer">Register</a></li>
+                {% else %}
+                    <li><a href="/center">{{ username }}</a></li>
+                    <li><a href="/logout">Log out</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="header wrapper">
+        <!-- cart -->
+        <a href="/cart">
+            <div class="cart">
+                <span>2</span>
+            </div>
+        </a>
+        <!-- search bar -->
+        <form action="/search" method="post">
+            <div class="search">
+                <input type="text" placeholder="Search..Apple" name="search"><button type="submit">Search</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="product wrapper">
+        <div class="attributes">
+
+            <div class="pic">
+                <img src="{{ url_for('static', filename=product_detail[6].replace('static', '').replace('\\', '/')).replace('//', '/') }}" alt="">
+            </div>
+
+            <div class="bd">
+                <h3 class='name'> {{ product_detail[3] }} </h3>
+                <p>&nbsp;&nbsp;Vendor &nbsp;: {{ vendor_name[0] }}</p>
+                <p>Category : {{ categories[1] }}</p>
+                <p class="price">&nbsp;&nbsp;&nbsp;Price &nbsp;&nbsp;&nbsp;: <b>￥</b> <i>{{ product_detail[10] }}</i><span>{{ product_detail[4] }}</span></p>
+
+                {% if not username %}
+                    <div class="like">
+                        <a href="/login">Like : {{ product_detail[11] }}</a>
+                        <a href="/login">Dislike : {{ product_detail[12] }}</a>
+                    </div>
+                {% else %}
+                    {% if status == 1 %}
+                        <div class="like">
+                            <a href="/product/{{ product_detail[0] }}/like">Like : {{ product_detail[11] }}</a>
+                            <a href="/product/{{ product_detail[0] }}/dislike" class="light">Dislike : {{ product_detail[12] }}</a>
+                        </div>
+                    {% elif status == 2 %}
+                        <div class="like">
+                            <a href="/product/{{ product_detail[0] }}/like" class="light">Like : {{ product_detail[11] }}</a>
+                            <a href="/product/{{ product_detail[0] }}/dislike">Dislike : {{ product_detail[12] }}</a>
+                        </div>
+                    {% else %}
+                        <div class="like">
+                            <a href="/product/{{ product_detail[0] }}/like">Like : {{ product_detail[11] }}</a>
+                            <a href="/product/{{ product_detail[0] }}/dislike">Dislike : {{ product_detail[12] }}</a>
+                        </div>
+                    {% endif %}
+
+                {% endif %}
+
+                <div class="opt">
+                    <input type="number" oninput="if(value<1)value=1; if(value>99)value=99;" value="1">
+                    <p name="amount" style="display: none" class="load_amount"></p>
+                    <a href="/buy_direct/{{ product_detail[0] }}?amount=1" class="buy_direct">Buy now</a>
+                    <a href="/add_cart/{{ product_detail[0] }}?amount=1" class="add_cart">Add to cart</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail wrapper">
+            <div class="tab clearfix">
+                <h3 class="active">Description</h3>
+                <h3>Comment</h3>
+            </div>
+            <div class="desc active">
+                <textarea name="" id="" readonly>{{ product_detail[5] }}</textarea>
+            </div>
+            <div class="comment">
+
+                <h3 class="title">Product Reviews</h3>
+                <ul>
+                    {% for c in comments %}
+                        <li>
+                            <p class="username">{{ c[2] }}</p>
+                            <div class="content">{{ c[0] }}</div>
+                            <p class="time">{{ c[1] }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <h3>Comment</h3>
+                <form id="comment_submit" action="/product/{{ product_detail[0] }}/comment" method="post">
+                    <textarea name="content" placeholder="Post your review..." maxlength="200"></textarea>
+                    <button>Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+
+    <script>
+
+        const tab = document.querySelectorAll('.detail .tab h3');
+        for (let i = 0; i < tab.length; i++) {
+            tab[i].addEventListener('click', function () {
+                if(i === 0){
+                    document.querySelector('.detail .tab .active').classList.remove('active');
+                    this.classList.add('active');
+                    document.querySelector('.detail .desc').classList.add('active');
+                    document.querySelector('.detail .comment').classList.remove('active');
+                }
+                if(i === 1){
+                    document.querySelector('.detail .tab .active').classList.remove('active');
+                    this.classList.add('active');
+                    document.querySelector('.detail .comment').classList.add('active');
+                    document.querySelector('.detail .desc').classList.remove('active');
+                }
+            })
+        }
+
+        const amount = document.querySelector('input[type="number"]')
+        const add_cart = document.querySelector('.add_cart')
+        const buy_product = document.querySelector('.buy_direct')
+        const get_value = () => {
+            let value = amount.value;
+            add_cart.href = `/add_cart/{{ product_detail[0] }}?amount=${value}`
+            buy_product.href = `/buy_direct/{{ product_detail[0] }}?amount=${value}`
+        }
+        amount.addEventListener('change', get_value);
+    </script>
+
+    <script src="../static/js/price.js"></script>
+
+</body>
+
+</html>

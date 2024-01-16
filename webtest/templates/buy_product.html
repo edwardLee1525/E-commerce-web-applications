@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/buy_product.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="/" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/order">Track my order</a></li>
+                <li><a href="/cart">My Cart</a></li>
+                <li><a href="/center">{{ username }}</a></li>
+                <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="header wrapper">
+        <!-- cart -->
+        <a href="/cart">
+            <div class="cart">
+                <span>2</span>
+            </div>
+        </a>
+        <!-- search bar -->
+        <form action="{{ url_for('search') }}" method="post">
+            <div class="search">
+                <input type="text" placeholder="Search..Apple" name="search"><button type="submit">Search</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+
+    <div class="pay wrapper">
+        <div class="content">
+            <h2>Settlement of accounts</h2>
+            <h3>Product Information</h3>
+            <div class="product">
+                <ul>
+                    <li>
+                        <div class="product_info">
+                            <div class="pic">
+                                <a href="/product/{{ product[0] }}"><img src="/{{ product[6] }}" alt="{{ product[3] }}"></a>
+                            </div>
+                            <div class="txt">
+                                <h5>{{ product[3] }}</h5>
+                            </div>
+                        </div>
+
+                        <div class="price">
+                            {% if product[10] is not none %}
+                                <b>￥<i style="margin-right: 6px">{{ product[10] }}</i></b>
+                                <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;" >{{ product[4] }}</span>
+                            {% else %}
+                                <b>￥<span>{{ product[4] }}</span></b>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            <p>{{ cart[3] }}</p>
+                        </div>
+
+                        <div class="price">
+                            {% if product[10] is not none %}
+                                <b>￥<i style="margin-right: 6px">{{ product[10]*cart[3] }}</i></b>
+                                <span style="text-decoration: line-through; font-size: 17px; color: #c2baba;" >{{ product[4]*cart[3] }}</span>
+                            {% else %}
+                                <b>￥<span>{{ product[4]*cart[3] }}</span></b>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="pay_methods">
+                    <h3>Buy Method :</h3>
+                    <input type="radio" name="pay_ment" checked> Alipay
+                    <input type="radio" name="pay_ment"> WeChat
+                    <div class="pay_method alipay active">
+                        <img src="../static/images/1683878442100.jpg" alt="">
+                    </div>
+                    <div class="pay_method weChat">
+                        <img src="../static/images/mm_facetoface_collect_qrcode_1683878955015.png" alt="">
+                    </div>
+                </div>
+                <div class="opt">
+                    <a href="/buy/{{ cart[0] }}">Payment completed</a>
+                    <a href="/cart">Return to Cart</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+    <script>
+        const tab = document.querySelectorAll('input[type="radio"]');
+        const pay_method = document.querySelectorAll('.pay_method');
+        for(let i = 0; i < tab.length; i++){
+            tab_change = () => {
+                document.querySelector('.pay_methods .active').classList.remove('active');
+                pay_method[i].classList.add('active');
+            }
+            tab[i].addEventListener('click', tab_change)
+        }
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/" class="logo">Edward's Shop</a>
+    </div>
+
+    <div class="tip">
+        <h2>
+            Welcome to use my website!
+        </h2>
+    </div>
+
+    <div class="login">
+        <form action="/login" autocomplete="off" class="active" method="post">
+            <div class="content wrapper">
+                <div>
+                    <h4>Buyer</h4>
+                </div>
+                <div class="username">
+                    <label>
+                        <input type="text" placeholder="Enter your username" name="username">
+                        <span>Username : </span>
+                    </label>
+                    <p></p>
+                </div>
+                <div class="pwd">
+                    <label>
+                        <input type="password" placeholder="Enter your password" name="pwd">
+                        <span>Password : </span>
+                    </label>
+                    <p></p>
+                </div>
+                <div class="button">
+                    <button class="enter">Login</button>
+                    <a href="/register_buyer">Register</a>
+                </div>
+                <div class="port">
+                    <span>vendor port..</span>
+                </div>
+                <input type="hidden" name="user_type" value="buyer">
+            </div>
+        </form>
+
+        <form action="/login" autocomplete="off" method="post">
+            <div class="content wrapper">
+                <div>
+                    <h4>Vendor</h4>
+                </div>
+                <div class="username">
+                    <label>
+                        <input type="text" placeholder="Enter your username" name="username">
+                        <span>Username : </span>
+                    </label>
+                    <p></p>
+                </div>
+                <div class="pwd">
+                    <label>
+                        <input type="password" placeholder="Enter your password" name="pwd">
+                        <span>Password : </span>
+                    </label>
+                    <p></p>
+                </div>
+                <div class="button">
+                    <button class="enter">Login</button>
+                    <a href="/register_vendor">Register</a>
+                </div>
+                <div class="port">
+                    <span>vendor port..</span>
+                </div>
+                <input type="hidden" name="user_type" value="vendor">
+            </div>
+        </form>
+    </div>
+
+<div id="error-message"></div>
+
+
+    <script>
+        const username = document.querySelector('.username input');
+        const pwd = document.querySelector('.pwd input');
+        const verifyName = () => {
+            const p = document.querySelector('.username p');
+            if (username.value === '') {
+                p.innerHTML = 'You must complete this field';
+                return false;
+            }
+            p.innerHTML = '';
+            return true;
+        }
+
+        username.addEventListener('change', verifyName);
+
+        const verifyPwd = () => {
+            const p = document.querySelector('.pwd p');
+            if (pwd.value === '') {
+                p.innerHTML = 'You must complete this field';
+                return false;
+            }
+            p.innerHTML = '';
+            return true;
+        }
+        pwd.addEventListener('change', verifyPwd);
+
+
+        const login = document.querySelector('.enter');
+        login.addEventListener('click', function (e) {
+            if (!verifyName()) e.preventDefault();
+            if (!verifyPwd()) e.preventDefault;
+        })
+
+        const logType = document.querySelectorAll('form');
+        const port = document.querySelectorAll('.port')
+        for (let i = 0; i < 2; i++) {
+            port[i].addEventListener('click', function () {
+                logType[i].classList.remove('active');
+                if (i === 1) {
+                    logType[0].classList.add('active');
+                }
+                else {
+                    logType[1].classList.add('active');
+                }
+            }
+            )
+        }
+
+    </script>
+
+    {% if error_message %}
+    <script>
+        alert('{{ error_message }}');
+    </script>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+.userbd .tab a:last-child{
+    background-color: #5eb69c;
+    color: #fff;
+    box-shadow: 1px 1px 1px #000;
+}
+
+
+.bd li .phone{
+    border-left: 1px solid #e8e8e8;
+    text-align: center;
+    width: 120px;
+}
+
+.bd li .address{
+    padding: 0 10px;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    text-align: center;
+    width: 180px;
+    word-wrap: break-word;
+    font-size: 13px;
+}
+
+.bd li .opt {
+    flex-direction: column;
+    width: 140px;
+}
+
+.bd li .opt a {
+    margin: 2px 0;
+    width: 100px;
+    height: 30px;
+    background-color: #5eb69c;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+}
+
+
+.bd li .amount {
+    width: 100px;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+}
+
+.bd li .time {
+    text-align: center;
+    width: 140px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.bd li .price {
+
+    width: 100px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.bd li .status {
+    padding: 0 10px;
+    width: 100px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.price b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+
+.price span,
+.price i {
+    color: red;
+    font-size: 19px;
+}
+
+
+.bd .common {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd .buyer{
+    width: 110px;
+    text-align: center;
+    border-left: 1px solid #e8e8e8;
+    font-size: 14px;
+}
+
+.bd li:first-child{
+    height: 30px;
+    line-height: 30px;
+}
+.bd li:first-child .goods{
+    margin-right: 0;
+    justify-content: space-around;
+}
+
+.bd li:first-child .address{
+    font-size: 16px;
+}
+
+.bd li:first-child .buyer{
+    font-size: 16px;
+}

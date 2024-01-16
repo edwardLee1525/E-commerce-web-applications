@@ -1,0 +1,162 @@
+body {
+    background-image: url(../upload/bcg_login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header {
+    padding-top: 30px;
+    text-align: center;
+    height: 100px;
+    background-color: #333;
+}
+
+.logo {
+    line-height: 52px;
+    font-size: 38px;
+    color: #dcdcdc;
+}
+
+.tip {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.tip h2 {
+    display: inline;
+    padding: 5px 20px;
+    width: fit-content;
+    border: 1px solid #000;
+    box-shadow: 2px 2px;
+    font-size: 27px;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.register {
+    text-align: center;
+}
+
+.register .content{
+    position: relative;
+    margin-top: 1px;
+    display: inline-block;
+    width: 590px;
+    height: 750px;
+    margin-bottom: 24px;
+    border: 2px solid #000;
+    box-shadow: 2px 2px;
+    background-color: rgba(220, 220, 220, .7);
+}
+
+.register h4{
+    padding: 20px 0;
+    font-size: 26px;
+    background-color: #3b3b3b;
+    color: #fff;
+}
+
+.register .username,
+.register .pwd,
+.register .confirm_pwd,
+.register .phone,
+.register .email,
+.register .address{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin-top: 50px;
+    font-size: 18px;
+}
+
+
+/* error hit */
+.register .username p,
+.register .pwd p,
+.register .confirm_pwd p,
+.register .phone p,
+.register .email p,
+.register .address p{
+    display: block;
+    position: absolute;
+    right: 48px;
+    bottom: -22px;
+    width: 370px;
+    text-align: center;
+    -webkit-touch-callout: none;
+    user-select: none;
+    color: red;
+    font-size: 12px;
+}
+
+.register .pwd p{
+    bottom: -40px;
+}
+
+.register .username input,
+.register .pwd input,
+.register .confirm_pwd input,
+.register .phone input,
+.register .email input,
+.register .address input{
+    float: right;
+    padding: 0 20px;
+    width: 270px;
+    height: 39px;
+    outline: none;
+    background-color: rgb(207, 207, 207, .7);
+    border: 1px solid #000;
+    box-shadow: 1px 1px;
+    vertical-align: top;
+}
+
+label{
+    width: 440px;
+}
+
+label span{
+    float: right;
+    margin-top: 4px;
+    margin-right: 10px;
+}
+
+.register .button{
+    margin-top: 40px;
+}
+
+.register .button a,
+.register .button button{
+    display: inline-block;
+    width: 130px;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(243, 193, 201, .9);
+    color: #fff;
+    outline: none;
+    border: none;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.register .button a:last-child{
+    margin-left: 20px;
+}
+
+.register .button a:hover,
+.register .button button:hover{
+    background-color: rgba(0, 213, 255, .8);
+}
+
+.register .port a{
+    display: block;
+    position: absolute;
+    padding: 0 10px;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.register .port a:hover{
+    background-color: rgba(0, 213, 255, .8);
+    color: white;
+}

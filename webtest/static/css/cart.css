@@ -1,0 +1,122 @@
+.main {
+    padding: 20px;
+}
+
+.main h4 {
+    display: block;
+    margin-bottom: 20px;
+    line-height: 45px;
+    font-size: 22px;
+}
+
+.bd li {
+    display: flex;
+    height: 137px;
+    margin-top: -1px;
+    margin-bottom: 20px;
+    border: 1px solid #c7c6c6;
+}
+
+.bd li .goods {
+    display: flex;
+    align-items: center;
+    padding: 17px 0 14px 12px;
+    flex: 1;
+    margin-right: 50px;
+}
+
+.bd li .goods .pic img {
+    width: 107px;
+    height: 107px;
+    margin-right: 10px;
+}
+
+.bd li .goods .txt {
+    flex: 1;
+    width: 0;
+}
+
+.bd li .goods .txt h5 {
+    font-weight: normal;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.bd li .amount {
+    width: 140px;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+}
+
+.bd li .address {
+    padding: 0 10px;
+    width: 260px;
+    border-right: 1px solid #e8e8e8;
+    word-wrap: break-word;
+}
+
+.bd li .price {
+    flex-direction: column;
+    width: 150px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.price b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+
+.price span,
+.price i {
+    color: red;
+    font-size: 19px;
+}
+
+
+
+.bd li .opt {
+    flex-direction: column;
+    width: 180px;
+}
+
+.bd li .opt a {
+    margin: 2px 0;
+    width: 100px;
+    height: 30px;
+    background-color: #5eb69c;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.bd .common {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd li:first-child {
+    height: 30px;
+    line-height: 30px;
+}
+
+.bd li:first-child .goods {
+    margin-right: 0;
+    justify-content: space-around;
+}
+
+.bd .amount a{
+    display: inline-block;
+    margin: 0 10px;
+    width: 20px;
+    height: 20px;
+    line-height: 16px;
+    text-align: center;
+    border: 2px solid black;
+}

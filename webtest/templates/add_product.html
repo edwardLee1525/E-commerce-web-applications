@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/edit.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="./product_vendor.html">Product Management</a></li>
+                <li><a href="./order_vendor.html">Order Management</a></li>
+                <li><a href="#">Username</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <form action="/add_product" enctype="multipart/form-data" method="post">
+        <div class="product">
+            <div class="wrapper">
+                <div class="head">
+                    <a href="/vendor_product">Back</a>
+                </div>
+                <div class="content">
+                    <div class="detail">
+                        <div class="pic">
+                            <input type="file" class="upload" accept="image/*" title="Choose one picture" name="product_pic">
+                            <img src="" alt="">
+                            <p><span>+ </span>add picture</p>
+
+                        </div>
+                        <div class="attribute">
+                            <div>
+                                <h3><span>Product Name</span>: <input type="text" name="name"></h3>
+                            </div>
+                            <div>
+                                <p>
+                                    <span>Category</span>:
+                                    <select name="category_id" id="">
+                                        {% for c in categories %}
+                                            <option value="{{ c[0] }}">{{ c[1] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="price">
+                                <p><span>Price</span>: <i>￥</i><input type="number" step="0.01" value="" style="width: 90px; color: red;" name="price">
+                                </p>
+                            </div>
+                            <div>
+                                <p><span>Description</span>: </p>
+                                <textarea name="desc" maxlength="200" placeholder="200 words limit"></textarea>
+                            </div>
+                            <div class="promotion_status">
+                                <p>
+                                    <span>Promotion Status</span>:
+                                    <input type="radio" name="status" value="1"> Yes
+                                    <input type="radio" name="status" checked value="0"> No
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="promotion">
+
+                        <p><span>Promotion Price </span>:
+                            <i>￥</i>
+                            <input type="number" step="0.01" name="promotional_price" value="" width="10px">
+                        </p>
+                        <span>Promotion Start :</span><input type="datetime-local" name="promotional_start">
+                        <span>Promotion End :</span><input type="datetime-local" name="promotional_end">
+
+                    </div>
+
+                </div>
+
+                <div class="opt">
+                    <button>Save</button>
+                    <a href="/vendor_product">Chancel</a>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="footer">
+
+    </div>
+
+    <script>
+        const status = document.querySelectorAll('input[type="radio"]');
+        const input_pic = document.querySelector('.upload');
+        const img = document.querySelector('.pic img');
+        const text = document.querySelector('.pic p');
+
+        const promotion = () =>{
+            if(status[0].checked){
+                document.querySelector('.promotion').style.display = 'block';
+            }
+            else{
+                document.querySelector('.promotion').style.display = 'none';
+            }
+        }
+
+        const add_picture = () => {
+            let file = input_pic.files[0];
+            if (file.type.indexOf("image") === 0) {
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    let newUrl = this.result;
+                    img.src = newUrl;
+                }
+                img.style.display = "block";
+                text.style.display = "none";
+            }
+        }
+
+
+
+        if (img.getAttribute("src") === '') {
+            text.style.display = "block";
+        }
+
+        input_pic.addEventListener('change', add_picture)
+
+        const input = document.querySelectorAll('input');
+        for (let i = 0; i < input.length; i++) {
+            if (input[i].value !== '') {
+                input[i].style.border = 'none';
+                input[i].style.boxShadow = 'none';
+            }
+
+            const blur_border = () => {
+                if (input[i].value === '') {
+                    input[i].style.border = '1px solid #000';
+                    input[i].style.borderRadius = '2px';
+                    input[i].style.boxShadow = '2px 2px #000';
+                } else {
+                    input[i].style.border = 'none';
+                    input[i].style.boxShadow = 'none';
+                }
+            }
+
+            const focus_border = () => {
+
+                input[i].style.border = '1px solid #000';
+                input[i].style.borderRadius = '2px';
+                input[i].style.outline = 'none';
+                input[i].style.boxShadow = '2px 2px #000';
+
+            }
+
+            input[i].addEventListener('blur', blur_border);
+            input[i].addEventListener('focus', focus_border);
+        }
+
+        for(let i = 0; i < 2; i++){
+            status[i].addEventListener('click', promotion);
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/search.css">
+</head>
+
+<body>
+    <div class="shortcut">
+        <div class="wrapper">
+            <a href="/" class="logo">Edward's Shop</a>
+            <ul>
+                <li><a href="/order">Track my order</a></li>
+                <li><a href="/cart">My Cart</a></li>
+                {% if not username %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register_buyer">Register</a></li>
+                {% else %}
+                    <li><a href="/center">{{ username }}</a></li>
+                    <li><a href="/logout">Log out</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="header wrapper">
+        <!-- cart -->
+        <a href="/cart">
+            <div class="cart">
+                <span>2</span>
+            </div>
+        </a>
+        <!-- search bar -->
+        <form action="/category/{{ category_id }}" method="post">
+            <div class="search">
+                <input type="text" placeholder="Search..Apple" name="search"><button type="submit">Search</button>
+                <span></span>
+            </div>
+        </form>
+    </div>
+
+    <div class="result">
+        <div class="wrapper">
+            <div class="category">
+                <ul>
+                    {% for c in categories %}
+                        {% if c[0] == category_id %}
+                            <li><a href="/search" class="active">{{ c[1] }}</a></li>
+                        {% else %}
+                            <li><a href="/category/{{ c[0] }}">{{ c[1] }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <h2>Search Result : </h2>
+            <div class="bd clearfix">
+                <ul>
+                {% if products != [] %}
+                    {% for product in products %}
+                        <li>
+                            <a href="/product/{{ product[0] }}">
+                                <img src="{{ url_for('static', filename=product[6].replace('static', '').replace('\\', '/')).replace('//', '/') }}" title="{{ product[3] }}">
+                                <h3>{{ product[3] }}</h3>
+                            </a>
+                            <b>￥</b>
+                            <i>{{ product[10] }}</i>
+                            <span>{{ product[4] }}</span>
+                        </li>
+                    {% endfor %}
+                {% else%}
+                    <div class="notice">
+                        <p></p>
+                    </div>
+                {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+
+    <script src="../static/js/price.js"></script>
+
+
+</body>
+
+</html>

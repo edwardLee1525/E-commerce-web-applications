@@ -1,0 +1,94 @@
+.result .bd ul{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    float: left;
+    min-height: 480px;
+}
+
+.result .bd li {
+    float: left;
+    padding-top: 10px;
+    margin: 0 16px 10px;
+    width: 265px;
+    height: 280px;
+    border: 1px solid #fff;
+    text-align: center;
+    background-color: white;
+}
+
+.result .bd li:hover {
+    border: 1px solid #000;
+    box-shadow: 2px 2px 1px;
+    transition: 1s;
+}
+
+.result .bd a img {
+    width: 180px;
+    height: 180px;
+}
+
+.result .bd a h3 {
+    margin: 10px 25px 10px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.result .bd b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+.result .bd span,
+.result .bd i {
+    color: red;
+    font-size: 19px;
+}
+
+.notice {
+    width: 1190px;
+    text-align: center;
+    background-color: rgb(236, 240, 243);
+}
+
+.notice p {
+    display: inline-block;
+    width: 640px;
+    height: 480px;
+    background-image: url("../images/web_1280___8_4x.jpg");
+    background-size: cover;
+}
+
+.category ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category li {
+    display: flex;
+    flex: 1;
+    margin-right: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+}
+
+.category li a {
+    display: inline-block;
+    font-size: 19px;
+    flex: 1;
+}
+
+.category li a:hover{
+    color: red;
+}
+
+.active{
+    color: white;
+    background-color: #00c65d;
+    border: 1px solid #ddd;
+}
+
+.result h2{
+    margin: 20px 0;
+}

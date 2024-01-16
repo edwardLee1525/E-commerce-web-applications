@@ -1,0 +1,90 @@
+.userbd .tab a:first-child{
+    background-color: #5eb69c;
+    color: #fff;
+    box-shadow: 1px 1px 1px #000;
+}
+
+.bd li .desc{
+    padding: 0 10px;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    text-align: center;
+    width: 280px;
+    word-wrap: break-word;
+}
+
+.bd li .opt {
+    flex-direction: column;
+    width: 190px;
+}
+
+.bd li .opt a {
+    margin: 2px 0;
+    width: 100px;
+    height: 30px;
+    background-color: #5eb69c;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.bd li .time {
+    text-align: center;
+    width: 220px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.bd li .price {
+    flex-direction: column;
+    width: 140px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.price b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+
+.price span,
+.price i {
+    color: red;
+    font-size: 19px;
+}
+
+
+.bd .common {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bd .category{
+    width: 160px;
+    text-align: center;
+    border-left: 1px solid #e8e8e8;
+}
+
+.bd .desc p{
+    max-height: 6em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.bd li:first-child{
+    height: 30px;
+    line-height: 30px;
+}
+.bd li:first-child .goods{
+    margin-right: 0;
+    justify-content: space-around;
+}
+
+.bd li:first-child .opt a{
+    height: 25px;
+    width: 40px;
+    border-radius: 10px;
+}
+

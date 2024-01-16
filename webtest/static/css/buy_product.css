@@ -1,0 +1,172 @@
+.wrapper{
+    width: 900px;
+}
+
+.pay {
+    background-color: white;
+    min-height: 600px;
+}
+
+.pay {
+    padding: 30px;
+}
+
+.total{
+    font-size: 22px;
+}
+
+.product ul{
+    border: 1px solid #000;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.product li{
+    display: flex;
+    margin: 15px;
+    align-items: center;
+}
+
+
+.product ul div{
+    display: flex;
+    width: 160px;
+    height: 160px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+
+}
+
+.product ul img{
+    width: 150px;
+    height: 150px;
+}
+
+.product ul .pic{
+    border-right: none;
+    border-left: none;
+}
+
+.product ul .price{
+    display: flex;
+    width: 160px;
+    flex-direction: column;
+    border-right: none;
+    border-left: none;
+}
+
+.product ul .price:last-child{
+    border-right: 1px solid black;
+}
+
+.product_info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.product_info .txt h5 {
+    margin-left: 20px;
+    font-weight: normal;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.product_info .txt{
+    border-right: none;
+    border-left: none;
+}
+
+.price b {
+    font-weight: 400;
+    color: red;
+    font-size: 16px;
+}
+
+
+.price span,
+.price i {
+    color: red;
+    font-size: 19px;
+}
+
+.pay_methods{
+    margin-top: 100px;
+}
+
+.pay_methods img{
+    width: 273px;
+    height: 300px;
+}
+
+.pay_method{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+input[type='text']{
+    border: 1px solid black;
+}
+
+.pay_method div{
+    margin-top: 20px;
+}
+
+.total{
+    margin-top: 20px;
+    float: right;
+}
+
+.total p:last-child{
+    float: right;
+}
+
+.pay .weChat,
+.pay .alipay{
+    text-align: center;
+}
+
+.pay .content h2{
+    text-align: center;
+    font-size: 24px;
+    font-weight: normal;
+    color: #7b7a7a;
+}
+
+.pay .content h3 {
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.pay .opt {
+    margin: 20px;
+    text-align: center;
+}
+
+.pay .opt a{
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 20px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.pay .opt a:first-child {
+    margin-right: 40px;
+}
+
+.pay .opt a:hover {
+    background-color: #00c65d;
+}
